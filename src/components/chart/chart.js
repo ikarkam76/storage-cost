@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import Radio from "@mui/material/Radio";
+import { LegendContainer, LegendItem, ResultContainer, ResultItem, Result} from "./chart.styled";
 
 const Chart = ({ value }) => {
   const { storage, transfer } = value;
@@ -70,36 +71,16 @@ const Chart = ({ value }) => {
 
   return (
     <>
-      <Box sx={{ display: "flex", width: "100%" }}>
-        <Box
-          sx={{
-            width: 200,
-            height: 400,
-            boxShadow: "0 0.5rem 1rem 0 rgb(0 0 0 / 10%)",
-            borderRadius: "5px",
-            backgroundColor: "#fff",
-          }}
-        >
-          <Box
-            sx={{
-              width: "100%",
-              height: "50px",
-              marginTop: "40px",
-            }}
-          >
+      <Box sx={{ display: "flex" }}>
+        <LegendContainer>
+          <LegendItem>
             <img
               src="https://www.backblaze.com/pics/header/logo-backblaze-flame-header.4851ea2289eaf4242079c6dcd0acb1be.png"
               alt="logo-backblaze"
               width="90%"
             />
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              height: "75px",
-              marginTop: "15px",
-            }}
-          >
+          </LegendItem>
+          <LegendItem>
             <img
               src="https://bunny.net/static/bunnynet-dark-1288676ed0416402d9368c73f9e34b55.svg"
               alt="logo-bunny"
@@ -122,14 +103,8 @@ const Chart = ({ value }) => {
               name="bunny"
             />{" "}
             SSD
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              height: "75px",
-              marginTop: "20px",
-            }}
-          >
+          </LegendItem>
+          <LegendItem>
             <img
               src="https://www.cloudflare.com/static/59d7eb016d2e0ca023658d2216a56eb4/logo-scaleway-600.png"
               alt="logo-scaleway"
@@ -152,74 +127,56 @@ const Chart = ({ value }) => {
               name="scaleway"
             />{" "}
             Single
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              height: "40px",
-              marginTop: "10px",
-            }}
-          >
+          </LegendItem>
+          <LegendItem>
             <img
               src="https://www.vultr.com/media/media_card_1200x630.png"
               alt="logo-vultr"
               width="80%"
             />
-          </Box>
-        </Box>
-        <Box sx={{ width: 600 }}>
-          <Box
+          </LegendItem>
+        </LegendContainer>
+        <ResultContainer>
+          <ResultItem
             sx={{
               width: `${backblaze <= 7 ? 7 : backblaze}%`,
-              height: "50px",
-              marginTop: "40px",
-              borderRadius: "0 5px 5px 0",
               backgroundColor:
                 result[0] === (backblaze <= 7 ? 7 : backblaze)
                   ? "#B73A3A"
                   : "#e0dfda",
             }}
           >
-            {backblaze <= 7 ? "7.00" : backblaze.toFixed(2)}$
-          </Box>
-          <Box
+            <Result>{backblaze <= 7 ? "7.00" : backblaze.toFixed(2)}$</Result>
+          </ResultItem>
+          <ResultItem
             sx={{
               width: `${bunny >= 10 ? 10 : bunny}%`,
-              height: "50px",
-              marginTop: "40px",
-              borderRadius: "0 5px 5px 0",
               backgroundColor:
                 result[0] === (bunny >= 10 ? 10 : bunny)
                   ? "#FE9666"
                   : "#e0dfda",
             }}
           >
-            {bunny >= 10 ? "10.00" : bunny.toFixed(2)}$
-          </Box>
-          <Box
+            <Result>{bunny >= 10 ? "10.00" : bunny.toFixed(2)}$</Result>
+          </ResultItem>
+          <ResultItem
             sx={{
               width: `${scaleway}%`,
-              height: "50px",
-              marginTop: "40px",
-              borderRadius: "0 5px 5px 0",
               backgroundColor: result[0] === scaleway ? "#5C2D91" : "#e0dfda",
             }}
           >
-            {scaleway.toFixed(2)}$
-          </Box>
-          <Box
+            <Result>{scaleway.toFixed(2)}$</Result>
+          </ResultItem>
+          <ResultItem
             sx={{
               width: `${vultr <= 5 ? 5 : vultr}%`,
-              height: "50px",
-              marginTop: "40px",
-              borderRadius: "0 5px 5px 0",
               backgroundColor:
                 result[0] === (vultr <= 5 ? 5 : vultr) ? "#118DFF" : "#e0dfda",
             }}
           >
-            {vultr <= 5 ? "5.00" : vultr.toFixed(2)}$
-          </Box>
-        </Box>
+            <Result>{vultr <= 5 ? "5.00" : vultr.toFixed(2)}$</Result>
+          </ResultItem>
+        </ResultContainer>
       </Box>
     </>
   );
