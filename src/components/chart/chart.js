@@ -21,11 +21,15 @@ const Chart = ({ value }) => {
   };
   
   useEffect(() => {
+    
     setBackblaze(storage * 0.005 + transfer * 0.01);
+
     setVultr(storage * 0.01 + transfer * 0.01);
+
     bunnyChecked === "a"
       ? setBunny(storage * 0.01 + transfer * 0.01)
       : setBunny(storage * 0.02 + transfer * 0.01);
+    
     if (scalewayChecked === 'a') {
       if (storage <= 75 && transfer <= 75) {
         setScaleway(0)
@@ -53,7 +57,8 @@ const Chart = ({ value }) => {
           }
         }
       }
-    }
+    };
+
     const sortedResult = [
       backblaze <= 7 ? 7 : backblaze,
       bunny >= 10 ? 10 : bunny,
@@ -64,7 +69,7 @@ const Chart = ({ value }) => {
   }, [backblaze, bunny, bunnyChecked, scaleway, scalewayChecked, storage, transfer, vultr]);
 
   return (
-    <div>
+    <>
       <Box sx={{ display: "flex", width: "100%" }}>
         <Box
           sx={{
@@ -216,7 +221,7 @@ const Chart = ({ value }) => {
           </Box>
         </Box>
       </Box>
-    </div>
+    </>
   );
 }
 
