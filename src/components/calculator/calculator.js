@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import Chart from "../chart/chart";
-import { SlidersContainer } from "./calculator.styled";
+import { ChartContainer, SlidersContainer } from "./calculator.styled";
 
 const Calculator = () => {
       const [storage, setStorage] = useState(0);
@@ -57,7 +57,9 @@ const Calculator = () => {
               </Box>
             </Box>
           </SlidersContainer>
-          <Chart value={{ storage, transfer }} />
+          <ChartContainer>
+            <Chart value={{ storage, transfer }} />
+          </ChartContainer>
         </div>
       );
 
